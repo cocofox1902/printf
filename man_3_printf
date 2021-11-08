@@ -8,12 +8,20 @@ SYNOPSIS
     _printf(a + b);
 
 DESCRIPTION
-    The functions in the printf() family produce output according to a format
+    The function _printf() is used to have a output of a format to stdout.
+
+    Conversion specifiers
+
+        c    Convert a int argument into an unsigned char, and the resulting character is written.
+
+        s     The pointer char * is browse in a loop into the end '\0' and it's print with the putchar function.
 
 EXAMPLES
-    
+    _printf("we love Holberton School\n");
 
-BUGS
-    
-COPYRIGHT
+    _printf("The Bermuda Triangle %c", c_var);
+
+    _printf("%s", str);
+
+AUTHOR
     Axel Valentin && Colas Renard for Holberton school
