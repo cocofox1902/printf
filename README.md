@@ -1,8 +1,8 @@
 # 0X11.C - Printf
-wwe wrote the printf function in C
+we wrote the printf function in C
 
 ## Return of Printf 
-
+```
 Let's try to printf a simple sentence.
 Let's try to printf a simple sentence.
 Length:[39, 39]
@@ -27,7 +27,7 @@ Len:[12]
 Len:[12]
 Unknown:[%r]
 Unknown:[%r]
-
+```
 ## Contributors
 
 Colas Renard && Axel Valentin
