@@ -1,0 +1,43 @@
+#ifndef PRINTF
+#define PRINTF
+
+#include <unistd.h>
+#include <stdio.h>
+#include <stdarg.h>
+#include <unistd.h>
+
+/**
+ *struct specifier - struct
+ *@valid: char
+ *@f: f
+ */
+
+typedef struct specifier
+{
+	char *valid;
+	int (*f)(va_list);
+} spec;
+int _printf(const char *format, ...);
+int _putchar(char c);
+int (*_flag(char j))(va_list);
+int int_print_d(va_list f);
+int int_print_i(va_list f);
+int int_print_b(va_list f);
+int int_print_b_arg(unsigned int b);
+int int_print_u(va_list f);
+int int_print_u_arg(unsigned int ui);
+int int_print_o(va_list f);
+int int_print_o_arg(unsigned int o);
+int int_print_x(va_list f);
+int int_print_x_arg(unsigned int x);
+int int_print_X(va_list f);
+int int_print_X_arg(unsigned int X);
+int int_print_c(va_list f);
+int int_print_cs(char *str);
+int int_print_s(va_list f);
+int int_print_p(va_list f);
+int int_print_p_arg(unsigned int p);
+int int_print_r(va_list f);
+int int_print_r_arg(unsigned int r);
+
+#endif /* PRINTF */
