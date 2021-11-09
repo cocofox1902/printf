@@ -11,6 +11,7 @@ int int_print_c(va_list f);
 int int_print_cs(char *s);
 int int_print_s(va_list f);
 int int_print_p_arg(unsigned int p);
+int nothing_print(va_list f);
 
 /**
  *int_print_d - print deximal
