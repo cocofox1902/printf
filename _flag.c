@@ -10,6 +10,7 @@ int (*_flag(char j))(va_list)
 {
 	int i = 0;
 	spec arr[] = {
+<<<<<<< HEAD
 		{"d", int_print_d},
 		{"i", int_print_i},
 		{"b", int_print_b},
@@ -22,6 +23,12 @@ int (*_flag(char j))(va_list)
 		{"p", int_print_p},
 		{"r", int_print_r},
 	};
+=======
+
+			{"d", int_print_d},
+			{"i", int_print_i},
+		};
+>>>>>>> eb2bd2170924a40d79e8a5746b1319cfea32e54b
 	while (arr[i].valid)
 	{
 		if (j == arr[i].valid[0])
