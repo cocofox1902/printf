@@ -1,5 +1,4 @@
 #include "main.h"
-<<<<<<< HEAD
 
 int int_print_d(va_list f);
 int int_print_i(va_list f);
@@ -13,20 +12,12 @@ int int_print_cs(char *s);
 int int_print_s(va_list f);
 int int_print_p_arg(unsigned int p);
 
-=======
->>>>>>> eb2bd2170924a40d79e8a5746b1319cfea32e54b
 /**
  *int_print_d - print deximal
  *@f: f
  *Return: count
  */
 
-<<<<<<< HEAD
-=======
-int int_print_d(va_list f);
-int print_i(va_list args);
-
->>>>>>> eb2bd2170924a40d79e8a5746b1319cfea32e54b
 int int_print_d(va_list f)
 {
 	unsigned int abs, a, count1, count;
@@ -67,7 +58,6 @@ int int_print_i(va_list f)
 {
 	return (int_print_d(f));
 }
-<<<<<<< HEAD
 
 /**
  *int_print_b_arg - print
@@ -237,5 +227,3 @@ int int_print_r_arg(unsigned int p)
 	}
 	return (0);
 }
-=======
->>>>>>> eb2bd2170924a40d79e8a5746b1319cfea32e54b

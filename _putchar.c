@@ -12,7 +12,6 @@ int _putchar(char c)
 {
 	return (write(1, &c, 1));
 }
-<<<<<<< HEAD
 
 /**
  * _puts - prints a string to stdout
@@ -27,5 +26,3 @@ int _puts(char *str)
 		_putchar(str[x]);
 	return (x);
 }
-=======
->>>>>>> eb2bd2170924a40d79e8a5746b1319cfea32e54b
