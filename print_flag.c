@@ -164,14 +164,21 @@ int int_print_c(va_list f)
 
 int int_print_s(va_list f)
 {
-	char *s = va_arg(f, char *);
-	int i = 0;
+	int i;
+	char *s;
+
+	s = va_arg(f, char *);
 
 	if (s == NULL)
 	{
-		s = "(nil)";
+		s = "(null)";
 	}
-	i = int_print_cs(s);
+
+	for (i = 0; s[i] != '\0'; i++)
+	{
+		_putchar(s[i]);
+	}
+
 	return (i);
 }
 
