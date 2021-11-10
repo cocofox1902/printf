@@ -13,7 +13,7 @@ int _printf(const char *format, ...);
 
 int _printf(const char *format, ...)
 {
-	int (*flag)(va_list);
+	int (*char_follow)(va_list);
 	int i = 0, count = 0;
 	va_list f;
 
@@ -35,9 +35,9 @@ int _printf(const char *format, ...)
 				}
 				else
 				{
-					flag = _flag(format[i + 1]);
-					if (flag)
-						count += flag(f);
+					char_follow = _flag(format[i + 1]);
+					if (char_follow)
+						count += char_follow(f);
 					else
 						count = _putchar(format[i]) + _putchar(format[i + 1]);
 					i = i + 2;
