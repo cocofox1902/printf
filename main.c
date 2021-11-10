@@ -22,6 +22,8 @@ int main(void)
 	printf("Length:[%d, %i]\n", len2, len2);
 	_printf("Negative:[%d]\n", -762534);
 	printf("Negative:[%d]\n", -762534);
+	len = _printf("Percent:[%%]\n");
+	len2 = printf("Percent:[%%]\n");
 	_printf("Unsigned:[%u]\n", ui);
 	printf("Unsigned:[%u]\n", ui);
 	_printf("Unsigned octal:[%o]\n", ui);
@@ -32,15 +34,16 @@ int main(void)
 	printf("Character:[%c]\n", 'H');
 	_printf("Complete the sentence: You %s nothing, Jon Snow.\n", (char *)0);
 	_printf("%b\n", 98);
+	_printf("%S\n", "Best\nSchool");
 	_printf("String:[%s]\n", "I am a string !");
 	printf("String:[%s]\n", "I am a string !");
-	_printf("Address:[%p]\n", addr);
-	printf("Address:[%p]\n", addr);
 	len = _printf("Percent:[%%]\n");
 	len2 = printf("Percent:[%%]\n");
 	_printf("Len:[%d]\n", len);
 	printf("Len:[%d]\n", len2);
 	_printf("Unknown:[%r]\n");
+	_printf("Address:[%p]\n", addr);
+	printf("Address:[%p]\n", addr);
 	/**printf("Unknown:[%r]\n");*/
 	return (0);
 }
