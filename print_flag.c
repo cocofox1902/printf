@@ -306,7 +306,7 @@ int int_print_cs(char *s)
  *Return: f
  */
 
-int int_print_r(va_list f)
+int int_print_R(va_list f)
 {
 	char *str;
 	int i, j;
@@ -332,6 +332,31 @@ int int_print_r(va_list f)
 			_putchar(str[i]);
 	}
 	return (i);
+}
+
+/**
+ * int_print_r - reverse
+ * @f: f
+ * Return: f
+ */
+
+int int_print_r(va_list f)
+{
+	int j = 0, i = 0; /*i - count printed, k - length string*/
+	char *str = va_arg(f, char *);
+
+	if (str == NULL)
+		str = ")llun(";
+	while (str[i])
+	{
+		i++;
+	}
+	for (i -= 1; i >= 0; i--)
+	{
+		_putchar(str[i]);
+		j++;
+	}
+	return (j); /* printed */
 }
 
 /**
