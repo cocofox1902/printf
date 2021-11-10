@@ -20,8 +20,8 @@ int (*_flag(char j))(va_list)
 		{"X", int_print_X},
 		{"c", int_print_c},
 		{"s", int_print_s},
-		{"p", int_print_p},
 		{"r", int_print_r},
+		{"S", int_print_S},
 	};
 
 	while (arr[i].valid)
