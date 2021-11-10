@@ -28,9 +28,9 @@ DESCRIPTION
 
         o  - Convert and print numbers in Base 8 
 
-        x  - Convert and print numbers in Base 10 in Lowercase
+        x  - Convert and print numbers in Base 16 in Lowercase
 
-        X  - Convert and print numbers in Base 10 in Uppercase
+        X  - Convert and print numbers in Base 16 in Uppercase
 
         S  - Print ASCII string
 
