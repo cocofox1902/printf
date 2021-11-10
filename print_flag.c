@@ -95,8 +95,8 @@ int int_print_b(va_list f)
 }
 
 /**
- *int_print_u_arg - print
- *@ui: ui
+ *int_print_u - print
+ *@f: f
  *Return: f
  */
 
@@ -129,8 +129,8 @@ int int_print_u(va_list f)
 }
 
 /**
- *int_print_o_arg - print
- *@o: o
+ *int_print_o - print
+ *@f: f
  *Return: f
  */
 
@@ -163,8 +163,8 @@ int int_print_o(va_list f)
 }
 
 /**
- *int_print_x_arg - print
- *@x: x
+ *int_print_x - print
+ *@f: f
  *Return: f
  */
 
@@ -202,8 +202,8 @@ int int_print_x(va_list f)
 }
 
 /**
- *int_print_X_arg - print
- *@X: X
+ *int_print_X - print
+ *@f: f
  *Return: f
  */
 
@@ -302,6 +302,7 @@ int int_print_cs(char *s)
 
 /**
  *int_print_r - print
+ *@f: f
  *Return: f
  */
 
@@ -332,7 +333,11 @@ int int_print_r(va_list f)
 	}
 	return (i);
 }
-
+/**
+ *int_print_S - function
+ *@f: f
+ *Return: f
+ */
 int int_print_S(va_list f)
 {
 	unsigned int i;
