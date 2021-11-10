@@ -2,7 +2,7 @@
 
 int int_print_d(va_list f);
 int int_print_i(va_list f);
-int int_print_b_arg(unsigned int b);
+int int_print_b(va_list f);
 int int_print_u_arg(unsigned int ui);
 int int_print_o_arg(unsigned int o);
 int int_print_x_arg(unsigned int x);
@@ -61,19 +61,39 @@ int int_print_i(va_list f)
 }
 
 /**
- *int_print_b_arg - print
- *@b: b
- *Return: f
+ *int_print_b - print
+ *@f: f
+ *Return: j
  */
 
-int int_print_b_arg(unsigned int b)
+int int_print_b(va_list f)
 {
-	if (b)
+	unsigned int n, m, i = 1, k, a[32];
+	int j;
+
+	n = va_arg(f, unsigned int);
+	m = 2147483648;
+	a[0] = n / m;
+	while (i < 32)
 	{
-		int_print_b_arg(b / 2);
-		_putchar(b % 2 + '0');
+		m /= 2;
+		a[i] = (n / m) % 2;
+		i++;
 	}
-	return (0);
+	i = 0;
+	k = 0;
+	j = 0;
+	while (i < 32)
+	{
+		k += a[i];
+		if (k || i == 31)
+		{
+			_putchar(48 + a[i]);
+			j++;
+		}
+		i++;
+	}
+	return (j);
 }
 
 /**
