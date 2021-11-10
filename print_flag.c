@@ -3,9 +3,9 @@
 int int_print_d(va_list f);
 int int_print_i(va_list f);
 int int_print_b(va_list f);
-int int_print_u_arg(unsigned int ui);
-int int_print_o_arg(unsigned int o);
-int int_print_x_arg(unsigned int x);
+int int_print_u(va_list f);
+int int_print_o(va_list f);
+int int_print_x(va_list f);
 int int_print_X_arg(unsigned int X);
 int int_print_c(va_list f);
 int int_print_cs(char *s);
@@ -68,8 +68,8 @@ int int_print_i(va_list f)
 
 int int_print_b(va_list f)
 {
-	unsigned int n, m, i = 1, k, a[32];
-	int j;
+	unsigned int n, m, i = 1, k = 0, a[32];
+	int j = 0;
 
 	n = va_arg(f, unsigned int);
 	m = 2147483648;
@@ -81,8 +81,6 @@ int int_print_b(va_list f)
 		i++;
 	}
 	i = 0;
-	k = 0;
-	j = 0;
 	while (i < 32)
 	{
 		k += a[i];
@@ -102,12 +100,32 @@ int int_print_b(va_list f)
  *Return: f
  */
 
-int int_print_u_arg(unsigned int ui)
+int int_print_u(va_list f)
 {
-	if (ui / 10)
-		int_print_u_arg(ui / 10);
-	_putchar(ui % 10 + '0');
-	return (0);
+	unsigned int a[10];
+	unsigned int i, m, n, k;
+	int j;
+
+	n = va_arg(f, unsigned int);
+	m = 1000000000;
+	a[0] = n / m;
+	i = 1;
+	while (i < 10)
+	{
+		m /= 10;
+		a[i] = (n / m) % 10;
+		i++;
+	}
+	for (i = 0, k = 0, j = 0; i < 10; i++)
+	{
+		k = k + a[i];
+		if (k || i == 9)
+		{
+			_putchar(a[i] + 48);
+			j++;
+		}
+	}
+	return (j);
 }
 
 /**
@@ -116,14 +134,32 @@ int int_print_u_arg(unsigned int ui)
  *Return: f
  */
 
-int int_print_o_arg(unsigned int o)
+int int_print_o(va_list f)
 {
-	if (o)
+	unsigned int a[11];
+	unsigned int i, m, n, k;
+	int j;
+
+	n = va_arg(f, unsigned int);
+	m = 1073741824;
+	a[0] = n / m;
+	i = 1;
+	while (i < 11)
 	{
-		int_print_o_arg(o / 8);
-		_putchar(o % 8 + '0');
+		m /= 8;
+		a[i] = (n / m) % 8;
+		i++;
 	}
-	return (0);
+	for (i = 0, k = 0, j = 0; i < 11; i++)
+	{
+		k = k + a[i];
+		if (k || i == 10)
+		{
+			_putchar(a[i] + 48);
+			j++;
+		}
+	}
+	return (j);
 }
 
 /**
@@ -132,17 +168,37 @@ int int_print_o_arg(unsigned int o)
  *Return: f
  */
 
-int int_print_x_arg(unsigned int x)
+int int_print_x(va_list f)
 {
-	if (x)
+	unsigned int a[8];
+	unsigned int i, m, n, k;
+	int j;
+	char c;
+
+	c = 97 - 58;
+	n = va_arg(f, unsigned int);
+	m = 268435456;
+	a[0] = n / m;
+	i = 1;
+	while (i < 8)
 	{
-		int_print_x_arg(x / 16);
-		if (x % 16 < 10)
-			_putchar(x % 16 + '0');
-		else
-			_putchar(x % 16 + 32 + '7');
+		m /= 16;
+		a[i] = (n / m) % 16;
+		i++;
 	}
-	return (0);
+	for (i = 0, k = 0, j = 0; i < 8; i++)
+	{
+		k = k + a[i];
+		if (k || i == 7)
+		{
+			if (a[i] < 10)
+				_putchar(a[i] + 48);
+			else
+				_putchar(a[i] + c + 48);
+			j++;
+		}
+	}
+	return (j);
 }
 
 /**
@@ -151,17 +207,37 @@ int int_print_x_arg(unsigned int x)
  *Return: f
  */
 
-int int_print_X_arg(unsigned int X)
+int int_print_X(va_list f)
 {
-	if (X)
+	unsigned int a[8];
+	unsigned int i, m, n, k;
+	int j;
+	char c;
+
+	c = 97 - 58;
+	n = va_arg(f, unsigned int);
+	m = 268435456;
+	a[0] = n / m;
+	i = 1;
+	while (i < 8)
 	{
-		int_print_X_arg(X / 16);
-		if (X % 16 < 10)
-			_putchar(X % 16 + '0');
-		else
-			_putchar(X % 16 + '7');
+		m /= 16;
+		a[i] = (n / m) % 16;
+		i++;
 	}
-	return (0);
+	for (i = 0, k = 0, j = 0; i < 8; i++)
+	{
+		k = k + a[i];
+		if (k || i == 7)
+		{
+			if (a[i] < 10)
+				_putchar(a[i] + 48);
+			else
+				_putchar(a[i] + c + 48);
+			j++;
+		}
+	}
+	return (j);
 }
 
 /**
