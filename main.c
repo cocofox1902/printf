@@ -31,6 +31,7 @@ int main(void)
 	_printf("Character:[%c]\n", 'H');
 	printf("Character:[%c]\n", 'H');
 	_printf("Complete the sentence: You %s nothing, Jon Snow.\n", (char *)0);
+	_printf("%b\n", 98);
 	_printf("String:[%s]\n", "I am a string !");
 	printf("String:[%s]\n", "I am a string !");
 	_printf("Address:[%p]\n", addr);
