@@ -21,6 +21,7 @@ int (*_flag(char j))(va_list)
 		{"c", int_print_c},
 		{"s", int_print_s},
 		{"r", int_print_r},
+		{"R", int_print_R},
 		{"S", int_print_S},
 	};
 
