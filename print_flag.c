@@ -333,11 +333,13 @@ int int_print_r(va_list f)
 	}
 	return (i);
 }
+
 /**
  *int_print_S - function
  *@f: f
  *Return: f
  */
+
 int int_print_S(va_list f)
 {
 	unsigned int i;
