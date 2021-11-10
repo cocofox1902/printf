@@ -6,12 +6,12 @@ int int_print_b(va_list f);
 int int_print_u(va_list f);
 int int_print_o(va_list f);
 int int_print_x(va_list f);
-int int_print_X_arg(unsigned int X);
+int int_print_X(va_list f);
 int int_print_c(va_list f);
 int int_print_cs(char *s);
 int int_print_s(va_list f);
-int int_print_p_arg(unsigned int p);
 int nothing_print(va_list f);
+int int_print_S(va_list f);
 
 /**
  *int_print_d - print deximal
@@ -301,33 +301,71 @@ int int_print_cs(char *s)
 }
 
 /**
- *int_print_p_arg - print
- *@p: p
+ *int_print_r - print
  *Return: f
  */
 
-int int_print_p_arg(unsigned int p)
+int int_print_r(va_list f)
 {
-	if (p)
+	char *str;
+	int i, j;
+	char ch1[] = "ABCDEFGHIJKLMabcdefghijklmNOPQRSTUVWXYZnopqrstuvwxyz";
+	char ch2[] = "NOPQRSTUVWXYZnopqrstuvwxyzABCDEFGHIJKLMabcdefghijklm";
+
+	str = va_arg(f, char *);
+	if (str == NULL)
 	{
-		int_print_r_arg(p);
-		_putchar(p);
+		str = "(ahyy)";
 	}
-	return (0);
+	for (i = 0; str[i] != '\0'; i++)
+	{
+		for (j = 0; j <= 52; j++)
+		{
+			if (str[i] == ch1[j])
+			{
+				_putchar(ch2[j]);
+				break;
+			}
+		}
+		if (j == 53)
+			_putchar(str[i]);
+	}
+	return (i);
 }
 
-/**
- *int_print_r_arg - print
- *@p: p
- *Return: f
- */
-
-int int_print_r_arg(unsigned int p)
+int int_print_S(va_list f)
 {
-	if (p)
+	unsigned int i;
+	int j = 0, k;
+	char c = 'A' - ':';
+	char d[2];
+	char *s = va_arg(f, char *);
+
+	if (s == NULL)
+		s = "(null)";
+	for (i = 0; s[i]; i++)
 	{
-		int_print_r_arg(p);
-		_putchar(p);
+		if (s[i] < 32 || s[i] > 126)
+		{
+			_putchar('\\');
+			_putchar('x');
+			j += 2;
+			d[0] = s[i] / 16;
+			d[1] = s[i] % 16;
+			for (k = 0; k < 2; k++)
+			{
+				if (d[k] >= 10)
+					_putchar('0' + c + d[k]);
+				else
+					_putchar('0' + d[k]);
+			}
+			j += k;
+		}
+		else
+		{
+			_putchar(s[i]);
+			j++;
+		}
 	}
-	return (0);
+	return (j);
 }
