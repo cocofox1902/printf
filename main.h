@@ -31,9 +31,7 @@ int int_print_X(va_list f);
 int int_print_c(va_list f);
 int int_print_cs(char *str);
 int int_print_s(va_list f);
-int int_print_p(va_list f);
-int int_print_p_arg(unsigned int p);
 int int_print_r(va_list f);
-int int_print_r_arg(unsigned int r);
+int int_print_S(va_list f);
 
 #endif /* PRINTF */
