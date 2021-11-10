@@ -12,7 +12,7 @@ int int_print_cs(char *s);
 int int_print_s(va_list f);
 int nothing_print(va_list f);
 int int_print_S(va_list f);
-
+int int_print_r(va_list f);
 /**
  *int_print_d - print deximal
  *@f: f
