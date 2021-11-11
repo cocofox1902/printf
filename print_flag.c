@@ -142,7 +142,7 @@ int int_print_o(va_list f)
 	for (j = nbChar - 1; j >= 0; j--)
 		_putchar(nbOctal[j] + '0');
 
-	return (nbChar - 2);
+	return (nbChar);
 }
 
 /**
