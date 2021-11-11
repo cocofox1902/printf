@@ -131,6 +131,9 @@ int int_print_o(va_list f)
 
 	n = va_arg(f, int);
 
+	if (n == 0)
+		return (_putchar('0'));
+
 	for (nbChar = 0; n != 0; nbChar++)
 	{
 		nbOctal[nbChar] = n % 8;
