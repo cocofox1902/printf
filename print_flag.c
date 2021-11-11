@@ -266,9 +266,9 @@ int int_print_s(va_list f)
 }
 
 /**
- *int_print_cs - print
- *@s: s
- *Return: f
+ *int_print_cs - print cs 
+ *@s: variable 
+ *Return: cs
  */
 
 int int_print_cs(char *s)
