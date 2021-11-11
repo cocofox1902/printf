@@ -388,6 +388,12 @@ int int_print_S(va_list f)
 	}
 	return (j);
 }
+/**
+ *power - p
+ *@x: x
+ *@y: y
+ *Return: output
+ */
 
 static unsigned long power(unsigned int x, unsigned int y)
 {
