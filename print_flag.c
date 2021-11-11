@@ -13,6 +13,8 @@ int int_print_s(va_list f);
 int nothing_print(va_list f);
 int int_print_S(va_list f);
 int int_print_r(va_list f);
+int int_print_p(va_list f);
+
 /**
  *int_print_d - print deximal
  *@f: f
@@ -102,30 +104,19 @@ int int_print_b(va_list f)
 
 int int_print_u(va_list f)
 {
-	unsigned int a[10];
-	unsigned int i, m, n, k;
-	int j;
+	int size = 1, end, index, length = 0;
+	unsigned int number = va_arg(f, unsigned int);
 
-	n = va_arg(f, unsigned int);
-	m = 1000000000;
-	a[0] = n / m;
-	i = 1;
-	while (i < 10)
+	while (number / size > 9)
+		size *= 10;
+
+	for (index = size; index >= 1; index /= 10, length++)
 	{
-		m /= 10;
-		a[i] = (n / m) % 10;
-		i++;
+		end = (number / index) % 10;
+		_putchar(end + '0');
 	}
-	for (i = 0, k = 0, j = 0; i < 10; i++)
-	{
-		k = k + a[i];
-		if (k || i == 9)
-		{
-			_putchar(a[i] + 48);
-			j++;
-		}
-	}
-	return (j);
+
+	return (length);
 }
 
 /**
@@ -136,30 +127,24 @@ int int_print_u(va_list f)
 
 int int_print_o(va_list f)
 {
-	unsigned int a[11];
-	unsigned int i, m, n, k;
+	unsigned int n, nbChar;
 	int j;
+	int nbOctal[1024];
 
-	n = va_arg(f, unsigned int);
-	m = 1073741824;
-	a[0] = n / m;
-	i = 1;
-	while (i < 11)
+	n = va_arg(f, int);
+
+	if (n == 0)
+		return (_putchar('0'));
+
+	for (nbChar = 0; n != 0; nbChar++)
 	{
-		m /= 8;
-		a[i] = (n / m) % 8;
-		i++;
+		nbOctal[nbChar] = n % 8;
+		n = n / 8;
 	}
-	for (i = 0, k = 0, j = 0; i < 11; i++)
-	{
-		k = k + a[i];
-		if (k || i == 10)
-		{
-			_putchar(a[i] + 48);
-			j++;
-		}
-	}
-	return (j);
+	for (j = nbChar - 1; j >= 0; j--)
+		_putchar(nbOctal[j] + '0');
+
+	return (nbChar);
 }
 
 /**
@@ -170,35 +155,36 @@ int int_print_o(va_list f)
 
 int int_print_x(va_list f)
 {
-	unsigned int a[8];
-	unsigned int i, m, n, k;
-	int j;
-	char c;
+	int index, j, count;
+	unsigned int diff = 39, tmp;
+	unsigned int number = va_arg(f, unsigned int);
+	char hexa[9];
 
-	c = 97 - 58;
-	n = va_arg(f, unsigned int);
-	m = 268435456;
-	a[0] = n / m;
-	i = 1;
-	while (i < 8)
+	if (number == 0)
 	{
-		m /= 16;
-		a[i] = (n / m) % 16;
-		i++;
+		_putchar('0');
+		return (1);
 	}
-	for (i = 0, k = 0, j = 0; i < 8; i++)
+	for (index = 0, count = 0; number != 0; index++, count++)
 	{
-		k = k + a[i];
-		if (k || i == 7)
+		tmp = number % 16;
+		if (tmp >= 10)
 		{
-			if (a[i] < 10)
-				_putchar(a[i] + 48);
-			else
-				_putchar(a[i] + c + 48);
-			j++;
+			hexa[index] = tmp + diff + 48;
 		}
+		else
+		{
+			hexa[index] = tmp + 48;
+		}
+		number /= 16;
 	}
-	return (j);
+	j = index - 1;
+	while (j >= 0)
+	{
+		_putchar(hexa[j]);
+		j--;
+	}
+	return (count);
 }
 
 /**
@@ -209,35 +195,36 @@ int int_print_x(va_list f)
 
 int int_print_X(va_list f)
 {
-	unsigned int a[8];
-	unsigned int i, m, n, k;
-	int j;
-	char c;
+	int index, j, count;
+	unsigned int diff = 7, tmp;
+	unsigned int number = va_arg(f, unsigned int);
+	char hexa[9];
 
-	c = 97 - 58;
-	n = va_arg(f, unsigned int);
-	m = 268435456;
-	a[0] = n / m;
-	i = 1;
-	while (i < 8)
+	if (number == 0)
 	{
-		m /= 16;
-		a[i] = (n / m) % 16;
-		i++;
+		_putchar('0');
+		return (1);
 	}
-	for (i = 0, k = 0, j = 0; i < 8; i++)
+	for (index = 0, count = 0; number != 0; index++, count++)
 	{
-		k = k + a[i];
-		if (k || i == 7)
+		tmp = number % 16;
+		if (tmp >= 10)
 		{
-			if (a[i] < 10)
-				_putchar(a[i] + 48);
-			else
-				_putchar(a[i] + c + 48);
-			j++;
+			hexa[index] = tmp + diff + 48;
 		}
+		else
+		{
+			hexa[index] = tmp + 48;
+		}
+		number /= 16;
 	}
-	return (j);
+	j = index - 1;
+	while (j >= 0)
+	{
+		_putchar(hexa[j]);
+		j--;
+	}
+	return (count);
 }
 
 /**
@@ -301,9 +288,9 @@ int int_print_cs(char *s)
 }
 
 /**
- *int_print_r - print
+ *int_print_R - print
  *@f: f
- *Return: f
+ *Return: f if NULL (ahyy) -> (null)
  */
 
 int int_print_R(va_list f)
@@ -396,6 +383,62 @@ int int_print_S(va_list f)
 		else
 		{
 			_putchar(s[i]);
+			j++;
+		}
+	}
+	return (j);
+}
+
+static unsigned long power(unsigned int x, unsigned int y)
+{
+	unsigned int index;
+	unsigned long result = x;
+
+	for (index = 1; index < y; index++)
+	{
+		result *= x;
+	}
+	return (result);
+}
+
+int int_print_p(va_list f)
+{
+	unsigned int a[16];
+	unsigned int i, k;
+	unsigned long m, n;
+	int j = 0;
+	char c = 39;
+	char *s = "(nil)";
+
+	n = va_arg(f, unsigned long);
+
+	if (n == 0)
+	{
+		for (i = 0; s[i]; i++, j++)
+		{
+			_putchar(s[i]);
+		}
+		return (j);
+	}
+
+	_putchar('0');
+	_putchar('x');
+	m = power(16, 15);
+	a[0] = n / m;
+	for (j = 2, i = 1; i < 16; i++)
+	{
+		m /= 16;
+		a[i] = (n / m) % 16;
+	}
+	for (i = 0, k = 0; i < 16; i++)
+	{
+		k += a[i];
+		if (k || i == 15)
+		{
+			if (a[i] < 10)
+				_putchar('0' + a[i]);
+			else
+				_putchar('0' + c + a[i]);
 			j++;
 		}
 	}

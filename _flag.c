@@ -23,6 +23,7 @@ int (*_flag(char j))(va_list)
 		{"r", int_print_r},
 		{"R", int_print_R},
 		{"S", int_print_S},
+		{"p", int_print_p},
 	};
 
 	while (arr[i].valid)
