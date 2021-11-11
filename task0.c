@@ -1,4 +1,9 @@
 #include "main.h"
+
+int int_print_c(va_list f);
+int int_print_s(va_list f);
+int int_print_cs(char *s);
+
 /**
  *int_print_c - print char
  *@f: char to print
