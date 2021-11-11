@@ -16,9 +16,9 @@ int int_print_r(va_list f);
 int int_print_p(va_list f);
 
 /**
- *int_print_d - print deximal
- *@f: f
- *Return: count
+ *int_print_d - print base 10
+ *@f: decimal to print
+ *Return: base 10
  */
 
 int int_print_d(va_list f)
