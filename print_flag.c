@@ -120,9 +120,9 @@ int int_print_u(va_list f)
 }
 
 /**
- *int_print_o - print
- *@f: f
- *Return: f
+ *int_print_o - print in base 8
+ *@f: octet to print
+ *Return: base 8
  */
 
 int int_print_o(va_list f)
