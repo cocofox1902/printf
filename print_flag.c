@@ -406,6 +406,11 @@ static unsigned long power(unsigned int x, unsigned int y)
 	}
 	return (result);
 }
+/**
+ *int_print_p - int
+ *@f: f
+ *Return: int
+ */
 
 int int_print_p(va_list f)
 {
