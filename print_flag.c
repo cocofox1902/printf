@@ -407,9 +407,9 @@ static unsigned long power(unsigned int x, unsigned int y)
 	return (result);
 }
 /**
- *int_print_p - int
- *@f: f
- *Return: int
+ *int_print_p - print the pointer
+ *@f: pointer to print 
+ *Return: pointer
  */
 
 int int_print_p(va_list f)
