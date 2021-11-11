@@ -1,7 +1,7 @@
 #include "main.h"
 /**
  *int_print_R - print in rot13
- *@f: string to print 
+ *@f: string to print
  *Return: string in rot13
  */
 

@@ -1,6 +1,6 @@
 #include "main.h"
 /**
- * int_print_r - print reverse string 
+ * int_print_r - print reverse string
  * @f: string to print
  * Return: reverse string
  */
