@@ -97,9 +97,9 @@ int int_print_b(va_list f)
 }
 
 /**
- *int_print_u - print
- *@f: f
- *Return: f
+ *int_print_u - print unsigned int
+ *@f: int to print
+ *Return: unsigned int
  */
 
 int int_print_u(va_list f)
