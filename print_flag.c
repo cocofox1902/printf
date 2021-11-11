@@ -53,8 +53,8 @@ int int_print_d(va_list f)
 
 /**
  *int_print_i - print integer
- *@f: f
- *Return: f
+ *@f: int to print
+ *Return: int
  */
 
 int int_print_i(va_list f)
