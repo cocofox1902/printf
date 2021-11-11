@@ -228,9 +228,9 @@ int int_print_X(va_list f)
 }
 
 /**
- *int_print_c - print
- *@f: f
- *Return: f
+ *int_print_c - print char
+ *@f: char to print
+ *Return: char
  */
 
 int int_print_c(va_list f)
