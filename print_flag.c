@@ -63,9 +63,9 @@ int int_print_i(va_list f)
 }
 
 /**
- *int_print_b - print
- *@f: f
- *Return: j
+ *int_print_b - print in base 2
+ *@f: binary to print 
+ *Return: base 2
  */
 
 int int_print_b(va_list f)
