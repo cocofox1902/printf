@@ -102,17 +102,16 @@ int int_print_b(va_list f)
 
 int int_print_u(va_list f)
 {
-	int size = 1, result, i, length = 0;
-	unsigned int un_number = va_arg(f, unsigned int);
+	int size = 1, end, index, length = 0;
+	unsigned int number = va_arg(f, unsigned int);
 
-	while (un_number / size > 9)
+	while (number / size > 9)
 		size *= 10;
 
-	for (i = size; i >= 1; i /= 10)
+	for (index = size; index >= 1; index /= 10, length++)
 	{
-		result = (un_number / i) % 10;
-		_putchar(result + '0');
-		length++;
+		end = (number / index) % 10;
+		_putchar(end + '0');
 	}
 
 	return (length);
