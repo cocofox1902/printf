@@ -44,6 +44,31 @@ int main(void)
 	_printf("Unknown:[%r]\n");
 	_printf("Address:[%p]\n", addr);
 	printf("Address:[%p]\n", addr);
+	_printf("Address:[%p]\n", addr);
+	printf("Address:[%p]\n", addr);
+	addr = (void *)0x11104ffe637542f0;
+	_printf("Address:[%p]\n", addr);
+	printf("Address:[%p]\n", addr);
+	addr = (void *)0x0000000fe001a;
+	_printf("Address:[%p]\n", addr);
+	printf("Address:[%p]\n", addr);
+	addr = (void *)0x1000000142f0;
+	_printf("Address:[%p]\n", addr);
+	printf("Address:[%p]\n", addr);
+	_printf("Address:[%p]\n", addr);
+	printf("Address:[%p]\n", addr);
+	len = _printf("Address:[%p]\n", addr);
+	printf("len : %d\n", len);
+	len = printf("Address:[%p]\n", addr);
+	_printf("len : %d\n", len);
+
+	addr = (void *)0x11104ffe637542f0;
+	_printf("Address:[%p]\n", addr);
+	printf("Address:[%p]\n", addr);
+	len = _printf("Address:[%p]\n", addr);
+	printf("len : %d\n", len);
+	len = printf("Address:[%p]\n", addr);
+	_printf("len : %d\n", len);
 	/**printf("Unknown:[%r]\n");*/
 	return (0);
 }
