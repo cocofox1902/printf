@@ -288,9 +288,9 @@ int int_print_cs(char *s)
 }
 
 /**
- *int_print_R - print
- *@f: f
- *Return: f if NULL (ahyy) -> (null)
+ *int_print_R - print in rot13
+ *@f: string to print 
+ *Return: string in rot13
  */
 
 int int_print_R(va_list f)
@@ -324,7 +324,7 @@ int int_print_R(va_list f)
 /**
  * int_print_r - print reverse string 
  * @f: string to print
- * Return: j
+ * Return: reverse string
  */
 
 int int_print_r(va_list f)
@@ -349,7 +349,7 @@ int int_print_r(va_list f)
 /**
  *int_print_S - convert ASCII code in hexadecimal
  *@f: ASCII to print 
- *Return: j
+ *Return: ASCII code in hexadecimal
  */
 
 int int_print_S(va_list f)
