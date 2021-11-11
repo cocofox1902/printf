@@ -240,9 +240,9 @@ int int_print_c(va_list f)
 }
 
 /**
- *int_print_s - print
- *@f: f
- *Return: f
+ *int_print_s - print string
+ *@f: string to print
+ *Return: string
  */
 
 int int_print_s(va_list f)
