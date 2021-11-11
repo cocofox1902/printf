@@ -125,21 +125,27 @@ int int_print_u(va_list f)
 
 int int_print_o(va_list f)
 {
-	unsigned int n, nbChar;
-	int j;
-	int nbOctal[1024];
+	int i = 0;
+	unsigned int toconvert = va_arg(f, unsigned int);
+	char *result;
 
-	n = va_arg(f, int);
+	if (toconvert == 0)
+		return (_putchar('0'));
 
-	for (nbChar = 0; n != 0; nbChar++)
+	result = convert_octal(toconvert);
+
+	if (result == NULL)
+		return (0);
+
+	while (result[i] != '\0')
 	{
-		nbOctal[nbChar] = n % 8;
-		n = n / 8;
+		_putchar(result[i]);
+		i++;
 	}
-	for (j = nbChar - 1; j >= 0; j--)
-		_putchar(nbOctal[j] + '0');
 
-	return (nbChar - 2);
+	free(result);
+
+	return (i);
 }
 
 /**
