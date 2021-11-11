@@ -105,8 +105,8 @@ int int_print_u(va_list f)
 	int size, end, lenght, index;
 	unsigned int number = va_arg(f, unsigned int);
 
-	for (size = 1; number / size > 9; size *= 10)
-		continue;
+	while (number / size > 9)
+		size *= 10;
 	for (index = size, lenght = 0; index >= 1; index /= 10, lenght++)
 	{
 		end = (number / index) % 10;
