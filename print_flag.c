@@ -322,14 +322,14 @@ int int_print_R(va_list f)
 }
 
 /**
- * int_print_r - reverse
- * @f: f
- * Return: f
+ * int_print_r - print reverse string 
+ * @f: string to print
+ * Return: j
  */
 
 int int_print_r(va_list f)
 {
-	int j = 0, i = 0; /*i - count printed, k - length string*/
+	int j = 0, i = 0;
 	char *str = va_arg(f, char *);
 
 	if (str == NULL)
@@ -343,7 +343,7 @@ int int_print_r(va_list f)
 		_putchar(str[i]);
 		j++;
 	}
-	return (j); /* printed */
+	return (j);
 }
 
 /**
