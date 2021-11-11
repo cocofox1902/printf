@@ -52,5 +52,6 @@ int _printf(const char *format, ...)
 		va_end(f);
 		return (count);
 	}
-	return (-1);
+	else
+		return (-1);
 }

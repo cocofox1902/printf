@@ -2,15 +2,18 @@
 
 int int_print_d(va_list f);
 int int_print_i(va_list f);
-int int_print_b_arg(unsigned int b);
-int int_print_u_arg(unsigned int ui);
-int int_print_o_arg(unsigned int o);
-int int_print_x_arg(unsigned int x);
-int int_print_X_arg(unsigned int X);
+int int_print_b(va_list f);
+int int_print_u(va_list f);
+int int_print_o(va_list f);
+int int_print_x(va_list f);
+int int_print_X(va_list f);
 int int_print_c(va_list f);
 int int_print_cs(char *s);
 int int_print_s(va_list f);
-int int_print_p_arg(unsigned int p);
+int nothing_print(va_list f);
+int int_print_S(va_list f);
+int int_print_r(va_list f);
+int int_print_p(va_list f);
 
 /**
  *int_print_d - print deximal
@@ -60,87 +63,168 @@ int int_print_i(va_list f)
 }
 
 /**
- *int_print_b_arg - print
- *@b: b
- *Return: f
+ *int_print_b - print
+ *@f: f
+ *Return: j
  */
 
-int int_print_b_arg(unsigned int b)
+int int_print_b(va_list f)
 {
-	if (b)
+	unsigned int n, m, i = 1, k = 0, a[32];
+	int j = 0;
+
+	n = va_arg(f, unsigned int);
+	m = 2147483648;
+	a[0] = n / m;
+	while (i < 32)
 	{
-		int_print_b_arg(b / 2);
-		_putchar(b % 2 + '0');
+		m /= 2;
+		a[i] = (n / m) % 2;
+		i++;
 	}
-	return (0);
-}
-
-/**
- *int_print_u_arg - print
- *@ui: ui
- *Return: f
- */
-
-int int_print_u_arg(unsigned int ui)
-{
-	if (ui / 10)
-		int_print_u_arg(ui / 10);
-	_putchar(ui % 10 + '0');
-	return (0);
-}
-
-/**
- *int_print_o_arg - print
- *@o: o
- *Return: f
- */
-
-int int_print_o_arg(unsigned int o)
-{
-	if (o)
+	i = 0;
+	while (i < 32)
 	{
-		int_print_o_arg(o / 8);
-		_putchar(o % 8 + '0');
+		k += a[i];
+		if (k || i == 31)
+		{
+			_putchar(48 + a[i]);
+			j++;
+		}
+		i++;
 	}
-	return (0);
+	return (j);
 }
 
 /**
- *int_print_x_arg - print
- *@x: x
+ *int_print_u - print
+ *@f: f
  *Return: f
  */
 
-int int_print_x_arg(unsigned int x)
+int int_print_u(va_list f)
 {
-	if (x)
+	int size = 1, end, index, length = 0;
+	unsigned int number = va_arg(f, unsigned int);
+
+	while (number / size > 9)
+		size *= 10;
+
+	for (index = size; index >= 1; index /= 10, length++)
 	{
-		int_print_x_arg(x / 16);
-		if (x % 16 < 10)
-			_putchar(x % 16 + '0');
+		end = (number / index) % 10;
+		_putchar(end + '0');
+	}
+
+	return (length);
+}
+
+/**
+ *int_print_o - print
+ *@f: f
+ *Return: f
+ */
+
+int int_print_o(va_list f)
+{
+	unsigned int n, nbChar;
+	int j;
+	int nbOctal[1024];
+
+	n = va_arg(f, int);
+
+	if (n == 0)
+		return (_putchar('0'));
+
+	for (nbChar = 0; n != 0; nbChar++)
+	{
+		nbOctal[nbChar] = n % 8;
+		n = n / 8;
+	}
+	for (j = nbChar - 1; j >= 0; j--)
+		_putchar(nbOctal[j] + '0');
+
+	return (nbChar);
+}
+
+/**
+ *int_print_x - print
+ *@f: f
+ *Return: f
+ */
+
+int int_print_x(va_list f)
+{
+	int index, j, count;
+	unsigned int diff = 39, tmp;
+	unsigned int number = va_arg(f, unsigned int);
+	char hexa[9];
+
+	if (number == 0)
+	{
+		_putchar('0');
+		return (1);
+	}
+	for (index = 0, count = 0; number != 0; index++, count++)
+	{
+		tmp = number % 16;
+		if (tmp >= 10)
+		{
+			hexa[index] = tmp + diff + 48;
+		}
 		else
-			_putchar(x % 16 + 32 + '7');
+		{
+			hexa[index] = tmp + 48;
+		}
+		number /= 16;
 	}
-	return (0);
+	j = index - 1;
+	while (j >= 0)
+	{
+		_putchar(hexa[j]);
+		j--;
+	}
+	return (count);
 }
 
 /**
- *int_print_X_arg - print
- *@X: X
+ *int_print_X - print
+ *@f: f
  *Return: f
  */
 
-int int_print_X_arg(unsigned int X)
+int int_print_X(va_list f)
 {
-	if (X)
+	int index, j, count;
+	unsigned int diff = 7, tmp;
+	unsigned int number = va_arg(f, unsigned int);
+	char hexa[9];
+
+	if (number == 0)
 	{
-		int_print_X_arg(X / 16);
-		if (X % 16 < 10)
-			_putchar(X % 16 + '0');
-		else
-			_putchar(X % 16 + '7');
+		_putchar('0');
+		return (1);
 	}
-	return (0);
+	for (index = 0, count = 0; number != 0; index++, count++)
+	{
+		tmp = number % 16;
+		if (tmp >= 10)
+		{
+			hexa[index] = tmp + diff + 48;
+		}
+		else
+		{
+			hexa[index] = tmp + 48;
+		}
+		number /= 16;
+	}
+	j = index - 1;
+	while (j >= 0)
+	{
+		_putchar(hexa[j]);
+		j--;
+	}
+	return (count);
 }
 
 /**
@@ -163,14 +247,21 @@ int int_print_c(va_list f)
 
 int int_print_s(va_list f)
 {
-	char *s = va_arg(f, char *);
-	int i = 0;
+	int i;
+	char *s;
+
+	s = va_arg(f, char *);
 
 	if (s == NULL)
 	{
-		s = "(nil)";
+		s = "(null)";
 	}
-	i = int_print_cs(s);
+
+	for (i = 0; s[i] != '\0'; i++)
+	{
+		_putchar(s[i]);
+	}
+
 	return (i);
 }
 
@@ -197,33 +288,159 @@ int int_print_cs(char *s)
 }
 
 /**
- *int_print_p_arg - print
- *@p: p
- *Return: f
+ *int_print_R - print
+ *@f: f
+ *Return: f if NULL (ahyy) -> (null)
  */
 
-int int_print_p_arg(unsigned int p)
+int int_print_R(va_list f)
 {
-	if (p)
+	char *str;
+	int i, j;
+	char ch1[] = "ABCDEFGHIJKLMabcdefghijklmNOPQRSTUVWXYZnopqrstuvwxyz";
+	char ch2[] = "NOPQRSTUVWXYZnopqrstuvwxyzABCDEFGHIJKLMabcdefghijklm";
+
+	str = va_arg(f, char *);
+	if (str == NULL)
 	{
-		int_print_r_arg(p);
-		_putchar(p);
+		str = "(ahyy)";
 	}
-	return (0);
+	for (i = 0; str[i] != '\0'; i++)
+	{
+		for (j = 0; j <= 52; j++)
+		{
+			if (str[i] == ch1[j])
+			{
+				_putchar(ch2[j]);
+				break;
+			}
+		}
+		if (j == 53)
+			_putchar(str[i]);
+	}
+	return (i);
 }
 
 /**
- *int_print_r_arg - print
- *@p: p
+ * int_print_r - reverse
+ * @f: f
+ * Return: f
+ */
+
+int int_print_r(va_list f)
+{
+	int j = 0, i = 0; /*i - count printed, k - length string*/
+	char *str = va_arg(f, char *);
+
+	if (str == NULL)
+		str = ")llun(";
+	while (str[i])
+	{
+		i++;
+	}
+	for (i -= 1; i >= 0; i--)
+	{
+		_putchar(str[i]);
+		j++;
+	}
+	return (j); /* printed */
+}
+
+/**
+ *int_print_S - function
+ *@f: f
  *Return: f
  */
 
-int int_print_r_arg(unsigned int p)
+int int_print_S(va_list f)
 {
-	if (p)
+	unsigned int i;
+	int j = 0, k;
+	char c = 'A' - ':';
+	char d[2];
+	char *s = va_arg(f, char *);
+
+	if (s == NULL)
+		s = "(null)";
+	for (i = 0; s[i]; i++)
 	{
-		int_print_r_arg(p);
-		_putchar(p);
+		if (s[i] < 32 || s[i] > 126)
+		{
+			_putchar('\\');
+			_putchar('x');
+			j += 2;
+			d[0] = s[i] / 16;
+			d[1] = s[i] % 16;
+			for (k = 0; k < 2; k++)
+			{
+				if (d[k] >= 10)
+					_putchar('0' + c + d[k]);
+				else
+					_putchar('0' + d[k]);
+			}
+			j += k;
+		}
+		else
+		{
+			_putchar(s[i]);
+			j++;
+		}
 	}
-	return (0);
+	return (j);
+}
+
+static unsigned long power(unsigned int x, unsigned int y)
+{
+	unsigned int index;
+	unsigned long result = x;
+
+	for (index = 1; index < y; index++)
+	{
+		result *= x;
+	}
+	return (result);
+}
+
+int int_print_p(va_list f)
+{
+	unsigned int a[16];
+	unsigned int i, k;
+	unsigned long m, n;
+	int j = 0;
+	char c = 39;
+	char *s = "(nil)";
+
+	n = va_arg(f, unsigned long);
+
+	if (n == 0)
+	{
+		for (i = 0; s[i]; i++, j++)
+		{
+			_putchar(s[i]);
+		}
+		return (j);
+	}
+
+	_putchar('0');
+	_putchar('x');
+	m = power(16, 15);
+	a[0] = n / m;
+	for (j = 2, i = 1; i < 16; i++)
+	{
+		m /= 16;
+		a[i] = (n / m) % 16;
+	}
+	for (i = 0, k = 0; i < 16; i++)
+	{
+		k += a[i];
+		if (k || i == 15)
+		{
+			if (a[i] < 10)
+				_putchar('0' + a[i]);
+			else
+				_putchar('0' + c + a[i]);
+			j++;
+		}
+	}
+	return (j);
 }

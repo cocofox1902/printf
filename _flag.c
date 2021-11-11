@@ -10,6 +10,7 @@ int (*_flag(char j))(va_list)
 {
 	int i = 0;
 	spec arr[] = {
+
 		{"d", int_print_d},
 		{"i", int_print_i},
 		{"b", int_print_b},
@@ -19,9 +20,12 @@ int (*_flag(char j))(va_list)
 		{"X", int_print_X},
 		{"c", int_print_c},
 		{"s", int_print_s},
-		{"p", int_print_p},
 		{"r", int_print_r},
+		{"R", int_print_R},
+		{"S", int_print_S},
+		{"p", int_print_p},
 	};
+
 	while (arr[i].valid)
 	{
 		if (j == arr[i].valid[0])

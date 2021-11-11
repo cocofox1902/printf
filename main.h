@@ -5,6 +5,7 @@
 #include <stdio.h>
 #include <stdarg.h>
 #include <unistd.h>
+#include <stdlib.h>
 
 /**
  *struct specifier - struct
@@ -23,21 +24,16 @@ int (*_flag(char j))(va_list);
 int int_print_d(va_list f);
 int int_print_i(va_list f);
 int int_print_b(va_list f);
-int int_print_b_arg(unsigned int b);
 int int_print_u(va_list f);
-int int_print_u_arg(unsigned int ui);
 int int_print_o(va_list f);
-int int_print_o_arg(unsigned int o);
 int int_print_x(va_list f);
-int int_print_x_arg(unsigned int x);
 int int_print_X(va_list f);
-int int_print_X_arg(unsigned int X);
 int int_print_c(va_list f);
 int int_print_cs(char *str);
 int int_print_s(va_list f);
-int int_print_p(va_list f);
-int int_print_p_arg(unsigned int p);
 int int_print_r(va_list f);
-int int_print_r_arg(unsigned int r);
+int int_print_R(va_list f);
+int int_print_S(va_list f);
+int int_print_p(va_list f);
 
 #endif /* PRINTF */
