@@ -125,21 +125,21 @@ int int_print_u(va_list f)
 
 int int_print_o(va_list f)
 {
-	unsigned int n, i;
+	unsigned int n, nbChar;
 	int j;
-	int octalNum[1024];
+	int nbOctal[1024];
 
 	n = va_arg(f, int);
-	i = 0;
-	while (n != 0)
+
+	for (nbChar = 0; n != 0; nbChar++)
 	{
-		octalNum[i] = n % 8;
+		nbOctal[nbChar] = n % 8;
 		n = n / 8;
-		i++;
 	}
-	for (j = i - 1; j >= 0; j--)
-		_putchar(octalNum[j] + '0');
-	return (i - 2);
+	for (j = nbChar - 1; j >= 0; j--)
+		_putchar(nbOctal[j] + '0');
+
+	return (nbChar - 2);
 }
 
 /**
@@ -150,31 +150,36 @@ int int_print_o(va_list f)
 
 int int_print_x(va_list f)
 {
-	unsigned int nb = va_arg(f, unsigned int);
-	unsigned int a[1024];
-	int i = 0, temp = 0;
-	char p;
+	int index, j, count;
+	unsigned int diff = 39, tmp;
+	unsigned int number = va_arg(f, unsigned int);
+	char hexa[9];
 
-	if (nb < 1)
+	if (number == 0)
 	{
-		write(1, "0", 1);
+		_putchar('0');
 		return (1);
 	}
-	for (i = 0; nb > 0; i++, temp++)
+	for (index = 0, count = 0; number != 0; index++, count++)
 	{
-		a[temp] = nb % 16;
-		nb /= 16;
-		if (a[temp] > 10)
-			a[i] = a[temp] + 39;
+		tmp = number % 16;
+		if (tmp >= 10)
+		{
+			hexa[index] = tmp + diff + 48;
+		}
 		else
-			a[i] = a[temp];
+		{
+			hexa[index] = tmp + 48;
+		}
+		number /= 16;
 	}
-	for (i = temp - 1; i >= 0; i--)
+	j = index - 1;
+	while (j >= 0)
 	{
-		p = a[i] + '0';
-		_putchar(p);
+		_putchar(hexa[j]);
+		j--;
 	}
-	return (temp);
+	return (count);
 }
 
 /**
@@ -185,31 +190,36 @@ int int_print_x(va_list f)
 
 int int_print_X(va_list f)
 {
-	unsigned int nb = va_arg(f, unsigned int);
-	int a[1024];
-	int i = 0, temp = 0;
-	char p;
+	int index, j, count;
+	unsigned int diff = 7, tmp;
+	unsigned int number = va_arg(f, unsigned int);
+	char hexa[9];
 
-	if (nb < 1)
+	if (number == 0)
 	{
-		write(1, "0", 1);
+		_putchar('0');
 		return (1);
 	}
-	for (i = 0; nb > 0; i++, temp++)
+	for (index = 0, count = 0; number != 0; index++, count++)
 	{
-		a[temp] = nb % 16;
-		nb /= 16;
-		if (a[i] > 10)
-			a[i] = a[temp] + 7;
+		tmp = number % 16;
+		if (tmp >= 10)
+		{
+			hexa[index] = tmp + diff + 48;
+		}
 		else
-			a[i] = a[temp];
+		{
+			hexa[index] = tmp + 48;
+		}
+		number /= 16;
 	}
-	for (i = temp - 1; i >= 0; i--)
+	j = index - 1;
+	while (j >= 0)
 	{
-		p = a[i] + '0';
-		_putchar(p);
+		_putchar(hexa[j]);
+		j--;
 	}
-	return (temp);
+	return (count);
 }
 
 /**
