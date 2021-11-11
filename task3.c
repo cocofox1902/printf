@@ -1,7 +1,7 @@
 #include "main.h"
 /**
  *int_print_b - print in base 2
- *@f: binary to print 
+ *@f: binary to print
  *Return: base 2
  */
 
