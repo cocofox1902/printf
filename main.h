@@ -34,5 +34,6 @@ int int_print_s(va_list f);
 int int_print_r(va_list f);
 int int_print_R(va_list f);
 int int_print_S(va_list f);
+int int_print_p(va_list f);
 
 #endif /* PRINTF */
