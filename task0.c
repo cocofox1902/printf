@@ -36,3 +36,24 @@ int int_print_s(va_list f)
 
 	return (i);
 }
+/**
+ *int_print_cs - print
+ *@s: s
+ *Return: f
+ */
+
+int int_print_cs(char *s)
+{
+	int i = 0;
+
+	if (s)
+	{
+		while (s)
+		{
+			_putchar(*s);
+			s++;
+			i++;
+		}
+	}
+	return (i);
+}
