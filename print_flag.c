@@ -389,10 +389,10 @@ int int_print_S(va_list f)
 	return (j);
 }
 /**
- *power - p
- *@x: x
- *@y: y
- *Return: output
+ *power - static struct for pointer 
+ *@x: variable
+ *@y: variable
+ *Return: result
  */
 
 static unsigned long power(unsigned int x, unsigned int y)
