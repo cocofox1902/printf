@@ -148,9 +148,9 @@ int int_print_o(va_list f)
 }
 
 /**
- *int_print_x - print
- *@f: f
- *Return: f
+ *int_print_x - print hexadecimal in lowercase
+ *@f: string to print
+ *Return: lowercase
  */
 
 int int_print_x(va_list f)
