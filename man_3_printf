@@ -44,7 +44,7 @@ DESCRIPTION
 EXAMPLES
     _printf("we love Holberton School\n");
 
-    _printf("The Bermuda Triangle %c", c_var);
+    _printf("The Bermuda Triangle < void %c", c_var);
 
     _printf("%s", str);
 
