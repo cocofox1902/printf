@@ -347,9 +347,9 @@ int int_print_r(va_list f)
 }
 
 /**
- *int_print_S - function
- *@f: f
- *Return: f
+ *int_print_S - convert ASCII code in hexadecimal
+ *@f: ASCII to print 
+ *Return: j
  */
 
 int int_print_S(va_list f)
