@@ -1,13 +1,14 @@
-NAME
+.TH _printf 3 12/11/2021 GNU 
+.SH NAME
     _printf : rewrite the printf function, this function works exactly like Printf.
-SYNOPSIS
+.SH SYNOPSIS
     In the case of a command, you get a formal description of how to run it and what command line options it takes.
     work like printf function
     #include "main.h"
 
     _printf(a + b);
 
-DESCRIPTION
+.SH DESCRIPTION
     The function _printf() is used to have a output of a format to stdout.
 
     Conversion specifiers
@@ -41,12 +42,12 @@ DESCRIPTION
         r  - Prints the reverse string
 
         R  - Prints the rot13'ed string
-EXAMPLES
+.SH EXAMPLES
     _printf("we love Holberton School\n");
 
     _printf("The Bermuda Triangle < void %c", c_var);
 
     _printf("%s", str);
 
-AUTHOR
+.SH AUTHOR
     Axel Valentin && Colas Renard for Holberton school
