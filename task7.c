@@ -1,7 +1,7 @@
 #include "main.h"
 /**
  *int_print_S - convert ASCII code in hexadecimal
- *@f: ASCII to print 
+ *@f: ASCII to print
  *Return: ASCII code in hexadecimal
  */
 

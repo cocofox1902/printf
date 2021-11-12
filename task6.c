@@ -1,6 +1,6 @@
 #include "main.h"
 /**
- *power - static struct for pointer 
+ *power - static struct for pointer
  *@x: variable
  *@y: variable
  *Return: result
@@ -19,7 +19,7 @@ static unsigned long power(unsigned int x, unsigned int y)
 }
 /**
  *int_print_p - print the pointer
- *@f: pointer to print 
+ *@f: pointer to print
  *Return: pointer
  */
 
